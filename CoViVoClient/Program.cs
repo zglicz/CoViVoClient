@@ -27,7 +27,7 @@ namespace CoViVoClient
                 else {
                     Console.WriteLine("Blad przy polaczeniu");
                 }
-                client.connect();
+                client.joinServer();
                 while (true) { }
                 //Application.EnableVisualStyles();
                 //Application.SetCompatibleTextRenderingDefault(false);

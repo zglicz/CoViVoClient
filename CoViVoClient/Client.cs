@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using WrapperLib;
 
 namespace CoViVoClient
 {
@@ -29,7 +30,7 @@ namespace CoViVoClient
             return true;
         }
 
-        public bool send_message(byte[] msg) {
+        public bool sendMessage(byte[] msg) {
             try {
                 tcp_stream.Write(msg, 0, msg.Length);
             }
@@ -39,5 +40,15 @@ namespace CoViVoClient
             return true;
         }
 
+        public void joinServer()
+        {
+            JoinServer js = new JoinServer();
+            js.user = "deva";
+            byte[] to_send = Util.Wrap(js);
+            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+            Console.WriteLine(encoding.GetString(to_send));
+
+            sendMessage(to_send);
+        }
     }
 }
