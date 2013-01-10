@@ -29,11 +29,11 @@ namespace CoViVoClient
                 }
                 if (client.send_message(msg1)) {
                     Console.WriteLine("Wyslano pierwsza wiadomosc");
-                    while (true) { }
                 }
                 else {
                     Console.WriteLine("Nie udalo sie wyslac wiadomosci");
                 }
+                while (true) { }
                 return;
                 //Application.EnableVisualStyles();
                 //Application.SetCompatibleTextRenderingDefault(false);
