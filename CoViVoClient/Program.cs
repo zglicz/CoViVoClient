@@ -27,14 +27,8 @@ namespace CoViVoClient
                 else {
                     Console.WriteLine("Blad przy polaczeniu");
                 }
-                if (client.send_message(msg1)) {
-                    Console.WriteLine("Wyslano pierwsza wiadomosc");
-                }
-                else {
-                    Console.WriteLine("Nie udalo sie wyslac wiadomosci");
-                }
+                client.connect();
                 while (true) { }
-                return;
                 //Application.EnableVisualStyles();
                 //Application.SetCompatibleTextRenderingDefault(false);
                 //Application.Run(new CoViVo());
