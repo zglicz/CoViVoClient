@@ -14,9 +14,11 @@ namespace CoViVoClient
         private const string server = "localhost";
         private TcpClient tcp_client;
         private NetworkStream tcp_stream;
+        private String nick;
 
 
-        public Client() {
+        public Client(String nick) {
+            this.nick = nick;
         }
 
         public bool connect() {
@@ -30,9 +32,15 @@ namespace CoViVoClient
             return true;
         }
 
-        public bool sendMessage(byte[] msg) {
+        public bool sendMessage(Message message) {
             try {
-                tcp_stream.Write(msg, 0, msg.Length);
+                connect();
+                message.user = nick;
+                byte[] wrappedMessage = Util.Wrap(message);
+                System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+                Console.WriteLine(encoding.GetString(wrappedMessage));
+                tcp_stream.Write(wrappedMessage, 0, wrappedMessage.Length);
+                tcp_client.Close();
             }
             catch (Exception e) {
                 return false;
@@ -40,15 +48,23 @@ namespace CoViVoClient
             return true;
         }
 
-        public void joinServer()
-        {
-            JoinServer js = new JoinServer();
-            js.user = "deva";
-            byte[] to_send = Util.Wrap(js);
-            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
-            Console.WriteLine(encoding.GetString(to_send));
+        public void joinServer() {
+            JoinServer joinServ = new JoinServer();
+            sendMessage(joinServ);
+        }
+        public void leaveServer() {
+            LeaveServer leaveServ = new LeaveServer();
+            sendMessage(leaveServ);
+        }
 
-            sendMessage(to_send);
+        public void sendWrappedMessage(String msg) {
+            Text message = new Text();
+            message.text = msg;
+            sendMessage(message);
+        }
+
+        public void createChannel(String name) {
+            StartChannel startChannel = new StartChannel();
         }
     }
 }

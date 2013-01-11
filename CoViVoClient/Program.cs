@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CoViVoClient
@@ -16,19 +17,15 @@ namespace CoViVoClient
             [STAThread]
             static void Main()
             {
-                Client client = new Client();
-                byte[] msg1 = Encoding.ASCII.GetBytes("Pierwsza wiadomosc");
-                byte[] msg2 = Encoding.ASCII.GetBytes("Druga wiadomosc");
-                byte[] msg3 = Encoding.ASCII.GetBytes("Trzecia wiadomosc");
-
-                if (client.connect()) {
-                    Console.WriteLine("Polaczono z serwerem");
-                }
-                else {
-                    Console.WriteLine("Blad przy polaczeniu");
-                }
-                client.joinServer();
-                while (true) { }
+                // uruchamia klienta udp. co 5 sekund wysyla Alive, rownolegle nasluchuje na wiadomosci
+                // od serwera i wypisuje je na konsole
+                CovUdpClient client = new CovUdpClient("deva");
+                client.connect();
+                Thread thread1 = new Thread(new ThreadStart(client.proover));
+                thread1.Start();
+                Thread thread2 = new Thread(new ThreadStart(client.listen));
+                thread2.Start();
+                
                 //Application.EnableVisualStyles();
                 //Application.SetCompatibleTextRenderingDefault(false);
                 //Application.Run(new CoViVo());

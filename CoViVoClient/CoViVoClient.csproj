@@ -60,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="CovUdpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
