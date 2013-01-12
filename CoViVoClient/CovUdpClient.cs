@@ -16,8 +16,8 @@ namespace CoViVoClient
         private UdpClient udp_client;
         private string nick;
 
-        public CovUdpClient(String nick) {
-            this.udp_client = new UdpClient(udp_port+1);
+        public CovUdpClient(String nick, int port) {
+            this.udp_client = new UdpClient(port);
             this.nick = nick;
         }
 
