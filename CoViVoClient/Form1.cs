@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using CoViVoClient;
 namespace WindowsFormsApplication1
 {
     public partial class CoViVo : Form
@@ -136,22 +135,27 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            chat s = new chat();
+            s.Show();
+            string item = listBox1.SelectedItem.ToString();
+            Console.WriteLine(item);
             //tutaj do czatu
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            chat s= new chat();
-            s.Show();
+
             List<string> items = new List<string>();
-            items.Add("la");
-            items.Add("lalllll");
+
+            items = client.getCurrentChannelList();
             listBox1.DataSource = items;
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
 
             
         }

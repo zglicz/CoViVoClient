@@ -35,13 +35,14 @@ using System.Windows.Forms;
             thread1.Start();
             Thread thread2 = new Thread(new ThreadStart(client.listen));
             thread2.Start(); */
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             CoViVo cov = new CoViVo();
-            Application.Run(cov);
             client.setGui(cov);
             cov.setClient(client);
+            Application.Run(cov);
+            Console.WriteLine(client.getCurrentChannelList().ElementAt(1));
+            
         }
     }
 }
