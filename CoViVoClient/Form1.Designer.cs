@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoViVo));
-            this.Send_button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Options = new System.Windows.Forms.ToolStripMenuItem();
             this.connectTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,29 +40,16 @@
             this.UnavailableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.conv_box = new System.Windows.Forms.TextBox();
-            this.YourBox = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.refresh = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Send_button
-            // 
-            this.Send_button.BackColor = System.Drawing.SystemColors.Window;
-            this.Send_button.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Send_button.ForeColor = System.Drawing.Color.DimGray;
-            this.Send_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Send_button.Location = new System.Drawing.Point(338, 373);
-            this.Send_button.Margin = new System.Windows.Forms.Padding(10);
-            this.Send_button.Name = "Send_button";
-            this.Send_button.Size = new System.Drawing.Size(80, 29);
-            this.Send_button.TabIndex = 1;
-            this.Send_button.Text = "Send";
-            this.Send_button.UseVisualStyleBackColor = false;
-            this.Send_button.Click += new System.EventHandler(this.button_send);
             // 
             // menuStrip1
             // 
@@ -73,7 +59,7 @@
             this.Options,
             this.Status,
             this.Settings});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 442);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 472);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(430, 24);
             this.menuStrip1.TabIndex = 4;
@@ -188,79 +174,99 @@
             this.LogoutTool.Text = "Log out";
             this.LogoutTool.Click += new System.EventHandler(this.logout_Click);
             // 
-            // conv_box
+            // button2
             // 
-            this.conv_box.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.conv_box.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.conv_box.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.conv_box.Location = new System.Drawing.Point(12, 12);
-            this.conv_box.Multiline = true;
-            this.conv_box.Name = "conv_box";
-            this.conv_box.Size = new System.Drawing.Size(406, 167);
-            this.conv_box.TabIndex = 5;
-            this.conv_box.Text = "Conversation box";
-            this.conv_box.TextChanged += new System.EventHandler(this.Conv_box);
+            this.button2.Location = new System.Drawing.Point(12, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Stwórz kanał";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // YourBox
+            // textBox1
             // 
-            this.YourBox.BackColor = System.Drawing.SystemColors.Control;
-            this.YourBox.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.YourBox.Location = new System.Drawing.Point(179, 294);
-            this.YourBox.Margin = new System.Windows.Forms.Padding(1);
-            this.YourBox.Multiline = true;
-            this.YourBox.Name = "YourBox";
-            this.YourBox.Size = new System.Drawing.Size(239, 68);
-            this.YourBox.TabIndex = 6;
-            this.YourBox.Text = "Your message...\r\n\r\n";
-            this.YourBox.TextChanged += new System.EventHandler(this.Your_box);
+            this.textBox1.Location = new System.Drawing.Point(12, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
             // 
-            // checkBox1
+            // label1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox1.Location = new System.Drawing.Point(338, 207);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(57, 19);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Voice";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.Voice_CheckedChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Wpisz nazwę kanału";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // checkBox2
+            // fontDialog1
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBox2.Location = new System.Drawing.Point(338, 230);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(58, 19);
-            this.checkBox2.TabIndex = 10;
-            this.checkBox2.Text = "Video";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.Video_CheckedChanged);
+            this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
-            // pictureBox1
+            // listBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(217, 373);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 29);
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox_Click);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(164, 25);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(210, 121);
+            this.listBox1.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(216, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 18);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Wybierz kanał";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Window;
+            this.button1.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(164, 148);
+            this.button1.Margin = new System.Windows.Forms.Padding(10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 29);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Join";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // refresh
+            // 
+            this.refresh.BackColor = System.Drawing.SystemColors.Window;
+            this.refresh.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.refresh.ForeColor = System.Drawing.Color.DimGray;
+            this.refresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.refresh.Location = new System.Drawing.Point(247, 148);
+            this.refresh.Margin = new System.Windows.Forms.Padding(10);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(127, 29);
+            this.refresh.TabIndex = 14;
+            this.refresh.Text = "Refresh list";
+            this.refresh.UseVisualStyleBackColor = false;
+            this.refresh.Click += new System.EventHandler(this.button3_Click);
             // 
             // CoViVo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(430, 466);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.YourBox);
-            this.Controls.Add(this.conv_box);
-            this.Controls.Add(this.Send_button);
+            this.ClientSize = new System.Drawing.Size(430, 496);
+            this.Controls.Add(this.refresh);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -271,7 +277,6 @@
             this.Load += new System.EventHandler(this.form_load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,23 +284,27 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Send_button;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem Options;
         private System.Windows.Forms.ToolStripMenuItem Settings;
         private System.Windows.Forms.ToolStripMenuItem Status;
-        private System.Windows.Forms.TextBox conv_box;
         private System.Windows.Forms.ToolStripMenuItem LogoutTool;
         private System.Windows.Forms.ToolStripMenuItem AvailableTool;
         private System.Windows.Forms.ToolStripMenuItem BeBackTool;
         private System.Windows.Forms.ToolStripMenuItem DisturbTool;
         private System.Windows.Forms.ToolStripMenuItem UnavailableTool;
-        private System.Windows.Forms.TextBox YourBox;
         private System.Windows.Forms.ToolStripMenuItem connectTool;
         private System.Windows.Forms.ToolStripMenuItem disconnectTool;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button refresh;
     }
+
+
 }
 
