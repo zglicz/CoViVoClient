@@ -29,69 +29,72 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(chat));
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.Send_button = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkVideo = new System.Windows.Forms.CheckBox();
+            this.checkVoice = new System.Windows.Forms.CheckBox();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.messageBox = new System.Windows.Forms.TextBox();
+            this.chatBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // checkBox1
+            // checkVideo
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Location = new System.Drawing.Point(12, 233);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(53, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Video";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkVideo.AutoSize = true;
+            this.checkVideo.BackColor = System.Drawing.Color.Transparent;
+            this.checkVideo.Location = new System.Drawing.Point(12, 233);
+            this.checkVideo.Name = "checkVideo";
+            this.checkVideo.Size = new System.Drawing.Size(53, 17);
+            this.checkVideo.TabIndex = 0;
+            this.checkVideo.Text = "Video";
+            this.checkVideo.UseVisualStyleBackColor = false;
+            this.checkVideo.CheckedChanged += new System.EventHandler(this.checkVideo_CheckedChanged);
             // 
-            // checkBox2
+            // checkVoice
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox2.Location = new System.Drawing.Point(71, 233);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(53, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Voice";
-            this.checkBox2.UseVisualStyleBackColor = false;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkVoice.AutoSize = true;
+            this.checkVoice.BackColor = System.Drawing.Color.Transparent;
+            this.checkVoice.Location = new System.Drawing.Point(71, 233);
+            this.checkVoice.Name = "checkVoice";
+            this.checkVoice.Size = new System.Drawing.Size(53, 17);
+            this.checkVoice.TabIndex = 1;
+            this.checkVoice.Text = "Voice";
+            this.checkVoice.UseVisualStyleBackColor = false;
+            this.checkVoice.CheckedChanged += new System.EventHandler(this.checkVoice_CheckedChanged);
             // 
-            // Send_button
+            // sendButton
             // 
-            this.Send_button.BackColor = System.Drawing.SystemColors.Window;
-            this.Send_button.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Send_button.ForeColor = System.Drawing.Color.DimGray;
-            this.Send_button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Send_button.Location = new System.Drawing.Point(185, 183);
-            this.Send_button.Margin = new System.Windows.Forms.Padding(10);
-            this.Send_button.Name = "Send_button";
-            this.Send_button.Size = new System.Drawing.Size(80, 29);
-            this.Send_button.TabIndex = 3;
-            this.Send_button.Text = "Send";
-            this.Send_button.UseVisualStyleBackColor = false;
+            this.sendButton.BackColor = System.Drawing.SystemColors.Window;
+            this.sendButton.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.sendButton.ForeColor = System.Drawing.Color.DimGray;
+            this.sendButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.sendButton.Location = new System.Drawing.Point(185, 183);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(10);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(80, 29);
+            this.sendButton.TabIndex = 3;
+            this.sendButton.Text = "Send";
+            this.sendButton.UseVisualStyleBackColor = false;
+            this.sendButton.Click += new System.EventHandler(this.Send_button_Click);
             // 
-            // textBox1
+            // messageBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.Location = new System.Drawing.Point(12, 183);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 39);
-            this.textBox1.TabIndex = 4;
+            this.messageBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.messageBox.Location = new System.Drawing.Point(12, 183);
+            this.messageBox.Multiline = true;
+            this.messageBox.Name = "messageBox";
+            this.messageBox.Size = new System.Drawing.Size(160, 39);
+            this.messageBox.TabIndex = 4;
+            this.messageBox.TextChanged += new System.EventHandler(this.messageBox_TextChanged);
             // 
-            // textBox2
+            // chatBox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox2.Location = new System.Drawing.Point(9, 12);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(263, 165);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.chatBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.chatBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.chatBox.Location = new System.Drawing.Point(9, 12);
+            this.chatBox.Multiline = true;
+            this.chatBox.Name = "chatBox";
+            this.chatBox.Size = new System.Drawing.Size(263, 165);
+            this.chatBox.TabIndex = 5;
+            this.chatBox.TextChanged += new System.EventHandler(this.chatBox_TextChanged);
             // 
             // chat
             // 
@@ -99,11 +102,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.Send_button);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chatBox);
+            this.Controls.Add(this.messageBox);
+            this.Controls.Add(this.sendButton);
+            this.Controls.Add(this.checkVoice);
+            this.Controls.Add(this.checkVideo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "chat";
             this.Text = "CoViVo chat";
@@ -115,10 +118,10 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button Send_button;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox checkVideo;
+        private System.Windows.Forms.CheckBox checkVoice;
+        private System.Windows.Forms.Button sendButton;
+        private System.Windows.Forms.TextBox messageBox;
+        private System.Windows.Forms.TextBox chatBox;
     }
 }

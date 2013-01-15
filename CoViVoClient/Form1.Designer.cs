@@ -40,14 +40,15 @@
             this.UnavailableTool = new System.Windows.Forms.ToolStripMenuItem();
             this.Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.createChannel = new System.Windows.Forms.Button();
+            this.channelNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.channelList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.join = new System.Windows.Forms.Button();
             this.refresh = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             this.Options,
             this.Status,
             this.Settings});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 472);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 334);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(430, 24);
             this.menuStrip1.TabIndex = 4;
@@ -85,7 +86,7 @@
             this.connectTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.connectTool.Image = ((System.Drawing.Image)(resources.GetObject("connectTool.Image")));
             this.connectTool.Name = "connectTool";
-            this.connectTool.Size = new System.Drawing.Size(133, 22);
+            this.connectTool.Size = new System.Drawing.Size(152, 22);
             this.connectTool.Text = "Connect";
             this.connectTool.Click += new System.EventHandler(this.connectTool_Click);
             // 
@@ -174,76 +175,83 @@
             this.LogoutTool.Text = "Log out";
             this.LogoutTool.Click += new System.EventHandler(this.logout_Click);
             // 
-            // button2
+            // createChannel
             // 
-            this.button2.Location = new System.Drawing.Point(12, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Stwórz kanał";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.createChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.createChannel.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.createChannel.ForeColor = System.Drawing.Color.DimGray;
+            this.createChannel.Location = new System.Drawing.Point(15, 51);
+            this.createChannel.Name = "createChannel";
+            this.createChannel.Size = new System.Drawing.Size(100, 31);
+            this.createChannel.TabIndex = 6;
+            this.createChannel.Text = "Create channel";
+            this.createChannel.UseVisualStyleBackColor = false;
+            this.createChannel.Click += new System.EventHandler(this.createChannel_Click);
             // 
-            // textBox1
+            // channelNameBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.channelNameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.channelNameBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.channelNameBox.Location = new System.Drawing.Point(15, 25);
+            this.channelNameBox.Name = "channelNameBox";
+            this.channelNameBox.Size = new System.Drawing.Size(100, 20);
+            this.channelNameBox.TabIndex = 7;
+            this.channelNameBox.TextChanged += new System.EventHandler(this.channelNameBox_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(12, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.Size = new System.Drawing.Size(153, 18);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Wpisz nazwę kanału";
+            this.label1.Text = "Write channel\'s name";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // fontDialog1
             // 
             this.fontDialog1.Color = System.Drawing.SystemColors.ControlText;
             // 
-            // listBox1
+            // channelList
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(164, 25);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(210, 119);
-            this.listBox1.TabIndex = 11;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.channelList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.channelList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.channelList.FormattingEnabled = true;
+            this.channelList.Location = new System.Drawing.Point(206, 94);
+            this.channelList.Margin = new System.Windows.Forms.Padding(5);
+            this.channelList.Name = "channelList";
+            this.channelList.Size = new System.Drawing.Size(210, 119);
+            this.channelList.TabIndex = 11;
+            this.channelList.SelectedIndexChanged += new System.EventHandler(this.channelList_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(216, 4);
+            this.label2.Location = new System.Drawing.Point(203, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 18);
+            this.label2.Size = new System.Drawing.Size(113, 18);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Wybierz kanał";
+            this.label2.Text = "Choose channel";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // button1
+            // join
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.DimGray;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(164, 148);
-            this.button1.Margin = new System.Windows.Forms.Padding(10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 29);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Join";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.join.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.join.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.join.ForeColor = System.Drawing.Color.DimGray;
+            this.join.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.join.Location = new System.Drawing.Point(206, 228);
+            this.join.Margin = new System.Windows.Forms.Padding(10);
+            this.join.Name = "join";
+            this.join.Size = new System.Drawing.Size(80, 29);
+            this.join.TabIndex = 13;
+            this.join.Text = "Join";
+            this.join.UseVisualStyleBackColor = false;
+            this.join.Click += new System.EventHandler(this.join_Click);
             // 
             // refresh
             // 
@@ -251,28 +259,39 @@
             this.refresh.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.refresh.ForeColor = System.Drawing.Color.DimGray;
             this.refresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.refresh.Location = new System.Drawing.Point(247, 148);
+            this.refresh.Location = new System.Drawing.Point(289, 228);
             this.refresh.Margin = new System.Windows.Forms.Padding(10);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(127, 29);
             this.refresh.TabIndex = 14;
             this.refresh.Text = "Refresh list";
             this.refresh.UseVisualStyleBackColor = false;
-            this.refresh.Click += new System.EventHandler(this.button3_Click);
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(248, 315);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(78, 19);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CoViVo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(430, 496);
-            this.Controls.Add(this.refresh);
+            this.ClientSize = new System.Drawing.Size(430, 358);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.refresh);
+            this.Controls.Add(this.join);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.channelList);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.channelNameBox);
+            this.Controls.Add(this.createChannel);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -301,14 +320,15 @@
         private System.Windows.Forms.ToolStripMenuItem UnavailableTool;
         private System.Windows.Forms.ToolStripMenuItem connectTool;
         private System.Windows.Forms.ToolStripMenuItem disconnectTool;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button createChannel;
+        private System.Windows.Forms.TextBox channelNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox channelList;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button join;
         private System.Windows.Forms.Button refresh;
+        private System.Windows.Forms.Button button1;
     }
 
 
