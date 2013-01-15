@@ -13,12 +13,21 @@ namespace CoViVoClient
         private const int server_port = 9050;
         private const string server = "localhost";
         private TcpClient tcp_client;
+        private TcpListener tcpListener;
         private NetworkStream tcp_stream;
         private String nick;
+        private String[] currentChannelList;
 
 
         public Client(String nick) {
             this.nick = nick;
+            IPAddress addr = IPAddress.Any;
+            tcpListener = new TcpListener(addr, server_port+2);
+            try {
+                tcpListener.Start();
+            }
+            catch (Exception e) {
+            }
         }
 
         public bool connect() {
@@ -65,6 +74,31 @@ namespace CoViVoClient
 
         public void createChannel(String name) {
             StartChannel startChannel = new StartChannel();
+            startChannel.channelName = name;
+            sendMessage(startChannel);
+        }
+
+        public void sendChannelListRequest() {
+            RequestChannelList request = new RequestChannelList();
+            sendMessage(request);
+        }
+
+        public void handleMessage(Message msg) {
+            if (msg is ChannelList) {
+                ChannelList list = (ChannelList)msg;
+                currentChannelList = list.channelList;
+                Console.WriteLine(list);
+            }
+        }
+
+        public void listen() {
+            while (true) {
+                TcpClient tempTcpClient = tcpListener.AcceptTcpClient();
+                NetworkStream tempTcpStream = tempTcpClient.GetStream();
+                byte[] wrappedMessage = new byte[1024];
+                tempTcpStream.Read(wrappedMessage, 0, wrappedMessage.Length);
+                handleMessage(Util.Unwrap(wrappedMessage));
+            }
         }
     }
 }
