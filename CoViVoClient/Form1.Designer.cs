@@ -85,7 +85,7 @@
             this.connectTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.connectTool.Image = ((System.Drawing.Image)(resources.GetObject("connectTool.Image")));
             this.connectTool.Name = "connectTool";
-            this.connectTool.Size = new System.Drawing.Size(152, 22);
+            this.connectTool.Size = new System.Drawing.Size(133, 22);
             this.connectTool.Text = "Connect";
             this.connectTool.Click += new System.EventHandler(this.connectTool_Click);
             // 
@@ -95,7 +95,7 @@
             this.disconnectTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.disconnectTool.Image = ((System.Drawing.Image)(resources.GetObject("disconnectTool.Image")));
             this.disconnectTool.Name = "disconnectTool";
-            this.disconnectTool.Size = new System.Drawing.Size(152, 22);
+            this.disconnectTool.Size = new System.Drawing.Size(133, 22);
             this.disconnectTool.Text = "Disconnect";
             this.disconnectTool.Click += new System.EventHandler(this.disconnectTool_Click);
             // 
@@ -120,7 +120,7 @@
             this.AvailableTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.AvailableTool.Image = ((System.Drawing.Image)(resources.GetObject("AvailableTool.Image")));
             this.AvailableTool.Name = "AvailableTool";
-            this.AvailableTool.Size = new System.Drawing.Size(152, 22);
+            this.AvailableTool.Size = new System.Drawing.Size(143, 22);
             this.AvailableTool.Text = "Available";
             this.AvailableTool.Click += new System.EventHandler(this.Available_Click);
             // 
@@ -130,7 +130,7 @@
             this.BeBackTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BeBackTool.Image = ((System.Drawing.Image)(resources.GetObject("BeBackTool.Image")));
             this.BeBackTool.Name = "BeBackTool";
-            this.BeBackTool.Size = new System.Drawing.Size(152, 22);
+            this.BeBackTool.Size = new System.Drawing.Size(143, 22);
             this.BeBackTool.Text = "Be right back";
             this.BeBackTool.Click += new System.EventHandler(this.BeBack_Click);
             // 
@@ -140,7 +140,7 @@
             this.DisturbTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DisturbTool.Image = ((System.Drawing.Image)(resources.GetObject("DisturbTool.Image")));
             this.DisturbTool.Name = "DisturbTool";
-            this.DisturbTool.Size = new System.Drawing.Size(152, 22);
+            this.DisturbTool.Size = new System.Drawing.Size(143, 22);
             this.DisturbTool.Text = "Don\'t disturb";
             this.DisturbTool.Click += new System.EventHandler(this.Disturb_Click);
             // 
@@ -150,7 +150,7 @@
             this.UnavailableTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.UnavailableTool.Image = ((System.Drawing.Image)(resources.GetObject("UnavailableTool.Image")));
             this.UnavailableTool.Name = "UnavailableTool";
-            this.UnavailableTool.Size = new System.Drawing.Size(152, 22);
+            this.UnavailableTool.Size = new System.Drawing.Size(143, 22);
             this.UnavailableTool.Text = "Unavailable";
             this.UnavailableTool.Click += new System.EventHandler(this.Unavailable_Click);
             // 
@@ -170,7 +170,7 @@
             this.LogoutTool.BackColor = System.Drawing.SystemColors.MenuBar;
             this.LogoutTool.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LogoutTool.Name = "LogoutTool";
-            this.LogoutTool.Size = new System.Drawing.Size(152, 22);
+            this.LogoutTool.Size = new System.Drawing.Size(115, 22);
             this.LogoutTool.Text = "Log out";
             this.LogoutTool.Click += new System.EventHandler(this.logout_Click);
             // 
@@ -186,6 +186,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Location = new System.Drawing.Point(12, 25);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
@@ -207,11 +209,15 @@
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(164, 25);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(5);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(210, 121);
+            this.listBox1.Size = new System.Drawing.Size(210, 119);
             this.listBox1.TabIndex = 11;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -226,7 +232,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Window;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.button1.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.ForeColor = System.Drawing.Color.DimGray;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -241,7 +247,7 @@
             // 
             // refresh
             // 
-            this.refresh.BackColor = System.Drawing.SystemColors.Window;
+            this.refresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.refresh.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.refresh.ForeColor = System.Drawing.Color.DimGray;
             this.refresh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -273,7 +279,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CoViVo";
             this.Text = "CoViVo";
-            this.TransparencyKey = System.Drawing.Color.White;
+            this.TransparencyKey = System.Drawing.Color.Maroon;
             this.Load += new System.EventHandler(this.form_load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

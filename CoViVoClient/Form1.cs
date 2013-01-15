@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoViVoClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,15 +7,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using CoViVoClient;
 namespace WindowsFormsApplication1
 {
     public partial class CoViVo : Form
     {
+        Client client;
         public CoViVo()
         {
             InitializeComponent();
         }
+       public void setClient(Client client) {
+           this.client = client;
+       
+       }
+
 
         private void form_load(object sender, EventArgs e)
         {
@@ -129,12 +136,24 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //tutaj do czatu
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hello World!");
+            chat s= new chat();
+            s.Show();
+            List<string> items = new List<string>();
+            items.Add("la");
+            items.Add("lalllll");
+            listBox1.DataSource = items;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            
         }
 
 
