@@ -20,8 +20,8 @@ using System.Windows.Forms;
             // uruchamia klienta udp. co 5 sekund wysyla Alive, rownolegle nasluchuje na wiadomosci
             // od serwera i wypisuje je na konsole
 
-            /*Client client = new Client("deva");
-            client.connect();
+            Client client = new Client("deva");
+            /*client.connect();
             client.sendChannelListRequest();
 
             Thread thread1 = new Thread(new ThreadStart(client.listen));
@@ -35,10 +35,13 @@ using System.Windows.Forms;
             thread1.Start();
             Thread thread2 = new Thread(new ThreadStart(client.listen));
             thread2.Start(); */
-                
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CoViVo());
+            CoViVo cov = new CoViVo();
+            Application.Run(cov);
+            client.setGui(cov);
+            cov.setClient(client);
         }
     }
 }
