@@ -60,6 +60,7 @@ namespace CoViVoClient
                 IPEndPoint ipep = new IPEndPoint(addr, 0);
                 byte[] messageWrapped = udp_client.Receive(ref ipep);
                 Message messageUnwrapped = WrapperLib.Util.Unwrap(messageWrapped);
+                Console.WriteLine("odebralem wiadomosc");
                 Console.WriteLine(messageUnwrapped);
             }
         }
