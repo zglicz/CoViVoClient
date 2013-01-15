@@ -5,29 +5,30 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApplication1;
 using WrapperLib;
 
 namespace CoViVoClient
 {
-    class Client {
+    public class Client {
         private const int server_port = 9050;
         private const string server = "localhost";
         private TcpClient tcp_client;
         private TcpListener tcpListener;
+        private IPAddress addr = IPAddress.Any;
         private NetworkStream tcp_stream;
         private String nick;
         private String[] currentChannelList;
+        private CoViVo gui;
 
 
         public Client(String nick) {
             this.nick = nick;
-            IPAddress addr = IPAddress.Any;
             tcpListener = new TcpListener(addr, server_port+2);
-            try {
-                tcpListener.Start();
-            }
-            catch (Exception e) {
-            }
+        }
+
+        public void setGui(CoViVo gui) {
+            this.gui = gui;
         }
 
         public bool connect() {
@@ -92,6 +93,7 @@ namespace CoViVoClient
         }
 
         public void listen() {
+            tcpListener.Start();
             while (true) {
                 TcpClient tempTcpClient = tcpListener.AcceptTcpClient();
                 NetworkStream tempTcpStream = tempTcpClient.GetStream();
@@ -99,6 +101,13 @@ namespace CoViVoClient
                 tempTcpStream.Read(wrappedMessage, 0, wrappedMessage.Length);
                 handleMessage(Util.Unwrap(wrappedMessage));
             }
+        }
+
+        public void getCurrentChannelList() {
+            currentChannelList = new String[3];
+            currentChannelList[0] = "abc";
+            currentChannelList[1] = "def";
+            currentChannelList[2] = "ghi";
         }
     }
 }
