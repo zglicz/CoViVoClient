@@ -103,11 +103,12 @@ namespace CoViVoClient
             }
         }
 
-        public void getCurrentChannelList() {
-            currentChannelList = new String[3];
-            currentChannelList[0] = "abc";
-            currentChannelList[1] = "def";
-            currentChannelList[2] = "ghi";
+        public List<String> getCurrentChannelList() {
+            List<String> list = new List<String>();
+            list.Add("abc");
+            list.Add("edf");
+            list.Add("ghi");
+            return list;
         }
     }
 }
