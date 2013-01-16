@@ -20,15 +20,21 @@ namespace CoViVoClient
         private String nick;
         private String[] currentChannelList;
         private CoViVo gui;
+        private CovUdpClient udpClient;
 
 
         public Client(String nick) {
             this.nick = nick;
-            tcpListener = new TcpListener(addr, server_port+2);
+            tcpListener = new TcpListener(addr, 9050);
+            udpClient = new CovUdpClient(this, nick, server_port+1);
         }
 
         public void setGui(CoViVo gui) {
             this.gui = gui;
+        }
+
+        public void setNick(String nick) {
+            this.nick = nick;
         }
 
         public bool connect() {
@@ -67,10 +73,8 @@ namespace CoViVoClient
             sendMessage(leaveServ);
         }
 
-        public void sendWrappedMessage(String msg) {
-            Text message = new Text();
-            message.text = msg;
-            sendMessage(message);
+        public void sendWrappedMessage(String msg, String channel) {
+            udpClient.sendMessage(msg, channel);
         }
 
         public void createChannel(String name) {
@@ -88,9 +92,12 @@ namespace CoViVoClient
             if (msg is ChannelList) {
                 ChannelList list = (ChannelList)msg;
                 currentChannelList = list.channelList;
-                Console.WriteLine(list);
+                Console.WriteLine("dostalem wiadomosc");
+            }
+            if (msg is Text) {
             }
         }
+
 
         public void listen() {
             tcpListener.Start();
@@ -110,5 +117,7 @@ namespace CoViVoClient
             list.Add("ghi");
             return list;
         }
+
+
     }
 }

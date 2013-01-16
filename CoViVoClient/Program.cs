@@ -21,12 +21,15 @@ using System.Windows.Forms;
             // od serwera i wypisuje je na konsole
 
             Client client = new Client("deva");
-            /*client.connect();
-            client.sendChannelListRequest();
+            client.joinServer();
+            
 
             Thread thread1 = new Thread(new ThreadStart(client.listen));
             thread1.Start();
-            while (true){} */
+            System.Threading.Thread.Sleep(1000);
+            
+            client.sendChannelListRequest();
+            while (true){} 
 
             /*CovUdpClient client = new CovUdpClient("deva", 123);//Convert.ToInt32(args[0]));
             client.connect();

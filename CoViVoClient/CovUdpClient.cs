@@ -14,11 +14,13 @@ namespace CoViVoClient
         private const int udp_port = 9051;
         private const string host = "localhost";
         private UdpClient udp_client;
+        private Client client;
         private string nick;
 
-        public CovUdpClient(String nick, int port) {
-            this.udp_client = new UdpClient(port);
+        public CovUdpClient(Client client, String nick, int port) {
+            this.udp_client = new UdpClient(udp_port+2);
             this.nick = nick;
+            this.client = client;
         }
 
         public bool connect() {
@@ -60,6 +62,7 @@ namespace CoViVoClient
                 IPEndPoint ipep = new IPEndPoint(addr, 0);
                 byte[] messageWrapped = udp_client.Receive(ref ipep);
                 Message messageUnwrapped = WrapperLib.Util.Unwrap(messageWrapped);
+                client.handleMessage(messageUnwrapped);
                 Console.WriteLine("odebralem wiadomosc");
                 Console.WriteLine(messageUnwrapped);
             }
