@@ -24,9 +24,6 @@ using System.Windows.Forms;
             client.joinServer();
             
 
-            Thread thread1 = new Thread(new ThreadStart(client.listen));
-            thread1.Start();
-            System.Threading.Thread.Sleep(1000);
             
             client.sendChannelListRequest();
             while (true){} 

@@ -25,7 +25,6 @@ namespace CoViVoClient
 
         public Client(String nick) {
             this.nick = nick;
-            tcpListener = new TcpListener(addr, 9050);
             udpClient = new CovUdpClient(this, nick, server_port+1);
         }
 
@@ -48,7 +47,7 @@ namespace CoViVoClient
             return true;
         }
 
-        public bool sendMessage(Message message) {
+        public bool sendMessage(Message message, bool response=false) {
             try {
                 connect();
                 message.user = nick;
@@ -56,6 +55,11 @@ namespace CoViVoClient
                 System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
                 Console.WriteLine(encoding.GetString(wrappedMessage));
                 tcp_stream.Write(wrappedMessage, 0, wrappedMessage.Length);
+                if (response) {
+                    byte[] wrappedResponse = new byte[1024];
+                    tcp_stream.Read(wrappedResponse, 0, wrappedResponse.Length);
+                    handleMessage(Util.Unwrap(wrappedResponse));
+                }
                 tcp_client.Close();
             }
             catch (Exception e) {
@@ -65,6 +69,11 @@ namespace CoViVoClient
         }
 
         public void joinServer() {
+            JoinServer joinServ = new JoinServer();
+            sendMessage(joinServ);
+        }
+        public void joinServer()
+        {
             JoinServer joinServ = new JoinServer();
             sendMessage(joinServ);
         }
@@ -80,19 +89,19 @@ namespace CoViVoClient
         public void createChannel(String name) {
             StartChannel startChannel = new StartChannel();
             startChannel.channelName = name;
-            sendMessage(startChannel);
+            sendMessage(startChannel, false);
         }
 
         public void sendChannelListRequest() {
             RequestChannelList request = new RequestChannelList();
-            sendMessage(request);
+            sendMessage(request, true);
         }
 
         public void handleMessage(Message msg) {
             if (msg is ChannelList) {
                 ChannelList list = (ChannelList)msg;
                 currentChannelList = list.channelList;
-                Console.WriteLine("dostalem wiadomosc");
+                Console.WriteLine(list);
             }
             if (msg is Text) {
             }
@@ -104,9 +113,7 @@ namespace CoViVoClient
             while (true) {
                 TcpClient tempTcpClient = tcpListener.AcceptTcpClient();
                 NetworkStream tempTcpStream = tempTcpClient.GetStream();
-                byte[] wrappedMessage = new byte[1024];
-                tempTcpStream.Read(wrappedMessage, 0, wrappedMessage.Length);
-                handleMessage(Util.Unwrap(wrappedMessage));
+                
             }
         }
 
