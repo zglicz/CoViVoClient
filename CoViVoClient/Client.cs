@@ -12,9 +12,9 @@ namespace CoViVoClient
 {
     public class Client {
         private const int server_port = 9050;
+        private int udp_port = 0;
         private const string server = "localhost";
         private TcpClient tcp_client;
-        private TcpListener tcpListener;
         private IPAddress addr = IPAddress.Any;
         private NetworkStream tcp_stream;
         private String nick;
@@ -24,8 +24,8 @@ namespace CoViVoClient
 
 
         public Client(String nick) {
-            this.nick = nick;
-            udpClient = new CovUdpClient(this, nick, server_port+1);
+            this.nick = nick; 
+            //udpClient = new CovUdpClient(this, nick, udp_port);
         }
 
         public void setGui(CoViVo gui) {
@@ -68,14 +68,15 @@ namespace CoViVoClient
             return true;
         }
 
-        public void joinServer() {
-            JoinServer joinServ = new JoinServer();
-            sendMessage(joinServ);
-        }
-        public void joinServer()
+        public void joinServer(String nick, int port)
         {
+            this.nick = nick;
+            this.udp_port = port;
             JoinServer joinServ = new JoinServer();
             sendMessage(joinServ);
+            udpClient = new CovUdpClient(this, nick, port);
+            udpClient.connect();
+            Console.WriteLine("udp Client: " + udpClient);
         }
         public void leaveServer() {
             LeaveServer leaveServ = new LeaveServer();
@@ -83,6 +84,8 @@ namespace CoViVoClient
         }
 
         public void sendWrappedMessage(String msg, String channel) {
+            Console.WriteLine("udp client is null " + (udpClient == null));
+            //udpClient = new CovUdpClient(this, nick, udp_port);
             udpClient.sendMessage(msg, channel);
         }
 
@@ -90,6 +93,12 @@ namespace CoViVoClient
             StartChannel startChannel = new StartChannel();
             startChannel.channelName = name;
             sendMessage(startChannel, false);
+        }
+
+        public void joinChannel(String name) {
+            JoinChannel joinChannel = new JoinChannel();
+            joinChannel.channelName = name;
+            sendMessage(joinChannel, false);
         }
 
         public void sendChannelListRequest() {
@@ -104,24 +113,15 @@ namespace CoViVoClient
                 Console.WriteLine(list);
             }
             if (msg is Text) {
-            }
-        }
-
-
-        public void listen() {
-            tcpListener.Start();
-            while (true) {
-                TcpClient tempTcpClient = tcpListener.AcceptTcpClient();
-                NetworkStream tempTcpStream = tempTcpClient.GetStream();
-                
+                Text text = (Text)msg;
+                Console.WriteLine(text.text);
+                gui.handle_Message(text);
             }
         }
 
         public List<String> getCurrentChannelList() {
-            List<String> list = new List<String>();
-            list.Add("abc");
-            list.Add("edf");
-            list.Add("ghi");
+            sendChannelListRequest();
+            List<String> list = new List<String>(currentChannelList);
             return list;
         }
 

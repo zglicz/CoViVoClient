@@ -14,14 +14,16 @@ namespace CoViVoClient
     public partial class chat : Form
     {
         public String channelname;
+        public Client client;
         public chat()
         {
             InitializeComponent();
 
         }
-        public chat(String channel)
+        public chat(Client client, String channel)
         {
             InitializeComponent();
+            this.client = client;
             this.channelname = channel;
 
         }
@@ -44,8 +46,11 @@ namespace CoViVoClient
         private void Send_button_Click(object sender, EventArgs e)
         {
             String s = messageBox.Text;
+            client.sendWrappedMessage(s, channelname);
+            
             Console.WriteLine(s);
             messageBox.Text = "";
+
         }
 
         public void handle_Message(Text text)

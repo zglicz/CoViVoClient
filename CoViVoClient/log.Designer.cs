@@ -2,10 +2,15 @@
 {
     partial class log
     {
+        Client client;
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
+        public log(Client client) : this() {
+            this.client = client;
+        }
 
         /// <summary>
         /// Clean up any resources being used.

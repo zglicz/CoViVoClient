@@ -30,9 +30,10 @@ namespace WindowsFormsApplication1
                string item = channelList.SelectedItem.ToString();
                Console.WriteLine(item);
                
-               chat s = new chat(item);
+               chat s = new chat(client, item);
                channels.Add(s);
                s.Show();
+               client.joinChannel(item);
            }
            catch (Exception ex)
            {
@@ -43,7 +44,7 @@ namespace WindowsFormsApplication1
 
        }
 
-       private void handle_Message(Text text)
+       public void handle_Message(Text text)
        {
            String channel = text.channelName;
            Console.WriteLine("to jes ttoo co odbieramy od kuby: " + channel);
@@ -99,7 +100,7 @@ namespace WindowsFormsApplication1
         private void connectTool_Click(object sender, EventArgs e)
         {
             //opcja connect, otwiera sie okienko do zalogowania
-            log s = new log();
+            log s = new log(client);
             s.Show();
             
         }

@@ -43,6 +43,8 @@ namespace CoViVoClient
             String port_string = portBox.Text;
             int port = Convert.ToInt32(port_string);
             Console.WriteLine("zalogowales sie jako: " + user + "na porcie:" + port);
+            //client = new Client(user, port);
+            client.joinServer(user, port);
         }
     }
 }

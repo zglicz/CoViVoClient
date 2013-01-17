@@ -21,28 +21,21 @@ using System.Windows.Forms;
             // od serwera i wypisuje je na konsole
 
             Client client = new Client("deva");
-            client.joinServer();
+            /*client.joinServer();
             
 
             
             client.sendChannelListRequest();
-            while (true){} 
-
+            while (true*/
             /*CovUdpClient client = new CovUdpClient("deva", 123);//Convert.ToInt32(args[0]));
             client.connect();
-            
-            Thread thread1 = new Thread(new ThreadStart(client.proover));
-            thread1.Start();
-            Thread thread2 = new Thread(new ThreadStart(client.listen));
-            thread2.Start(); */
+             */
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             CoViVo cov = new CoViVo();
             client.setGui(cov);
             cov.setClient(client);
             Application.Run(cov);
-            Console.WriteLine(client.getCurrentChannelList().ElementAt(1));
-            
         }
     }
 }
