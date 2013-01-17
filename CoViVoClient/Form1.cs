@@ -7,11 +7,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WrapperLib;
 namespace WindowsFormsApplication1
 {
     public partial class CoViVo : Form
     {
         Client client;
+        List<chat> channels = new List<chat>();
         public CoViVo()
         {
             InitializeComponent();
@@ -21,7 +23,54 @@ namespace WindowsFormsApplication1
        
        }
 
+       private void join_Click(object sender, EventArgs e)
+       {
+           try
+           {
+               string item = channelList.SelectedItem.ToString();
+               Console.WriteLine(item);
+               
+               chat s = new chat(item);
+               channels.Add(s);
+               s.Show();
+           }
+           catch (Exception ex)
+           {
+               MessageBox.Show("Musisz wybrać kanał");
+           }
 
+           //tutaj do czatu
+
+       }
+
+       private void handle_Message(Text text)
+       {
+           String channel = text.channelName;
+           Console.WriteLine("to jes ttoo co odbieramy od kuby: " + channel);
+           String user = text.user;
+           String message_text = text.text;
+           chat temp_chat = null;
+           foreach (chat c in channels)
+           {
+               if (c.channelname == channel)
+               {
+                   Console.WriteLine("to jest nasz wybrany czat: " + c.channelname);
+                   temp_chat = c;
+               }
+
+           } 
+           if (temp_chat != null)
+               temp_chat.handle_Message(text);
+       }
+       private void refresh_Click(object sender, EventArgs e)
+       {
+
+           List<string> items = new List<string>();
+
+           items = client.getCurrentChannelList();
+           channelList.DataSource = items;
+
+       }
         private void form_load(object sender, EventArgs e)
         {
             // załadowanie całej formy
@@ -49,7 +98,10 @@ namespace WindowsFormsApplication1
 
         private void connectTool_Click(object sender, EventArgs e)
         {
-            //opcja connect, nawiązanie połączenia z serwerem
+            //opcja connect, otwiera sie okienko do zalogowania
+            log s = new log();
+            s.Show();
+            
         }
 
 
@@ -123,9 +175,12 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void createChannel_Click(object sender, EventArgs e)
         {
-
+            String s = channelNameBox.Text;
+            Console.WriteLine(s);
+            client.createChannel(s);
+            channelNameBox.Text = "";
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -133,31 +188,31 @@ namespace WindowsFormsApplication1
 
         }
 
+
+        private void channelList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+            
+        }
+
+        private void channelNameBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            chat s = new chat();
-            s.Show();
-            string item = listBox1.SelectedItem.ToString();
-            Console.WriteLine(item);
-            //tutaj do czatu
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-            List<string> items = new List<string>();
-
-            items = client.getCurrentChannelList();
-            listBox1.DataSource = items;
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
-            
+            Text text = new Text();
+            text.user = "asdaa";
+            text.channelName = "edf";
+            text.text = "siema";
+            handle_Message(text);
         }
 
 
